@@ -146,6 +146,7 @@ public class GameLogic {
     public void resetStats() {
         setBulls(0);
         setCows(0);
+        setAttemptCounter(0);
     }
 
     /* Result handling */

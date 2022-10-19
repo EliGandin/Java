@@ -14,11 +14,15 @@ public class GuessingGame {
             gl.resetStats();
             return true;
         } else {
-            JOptionPane.showMessageDialog(null,
-                    "You Won !! \n" + "The target was " + gl.getTarget() +
-                            '\n' + "To reset the game press OK, otherwise, close the window");
-            gl.gameReset();
-            return true;
+            int n = JOptionPane.showOptionDialog(null, "You Won !! \n" + "The target was " + gl.getTarget() + "\nDo you want to play again?",
+                    "Title", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null, new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
+            if (n == JOptionPane.YES_OPTION) {
+                gl.gameReset();
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
