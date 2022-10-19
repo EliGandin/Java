@@ -79,11 +79,23 @@ public class GameLogic {
         inputLog.add(input);
     }
 
+    /* Checks if the input has distinct numbers */
+    private boolean isDistinct(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            for (int j = i + 1; j < input.length(); j++) {
+                if (input.charAt(i) == input.charAt(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     /* Validates the input */
     public int isValidInput(String input) {
-        if (input == null) {
+        if (input == null) { // User pressed escape or cancel
             return 2;
-        } else if (input.length() != 4) {
+        } else if ((input.length() != 4) || !isDistinct(input)) {
             return -1;
         } else {
             for (int i = 0; i < 4; i++) {
