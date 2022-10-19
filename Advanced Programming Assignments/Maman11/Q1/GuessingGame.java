@@ -15,7 +15,7 @@ public class GuessingGame {
             return true;
         } else {
             int n = JOptionPane.showOptionDialog(null, "You Won !! \n" + "The target was " + gl.getTarget() + "\nDo you want to play again?",
-                    "Title", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    "Winner", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null, new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
             if (n == JOptionPane.YES_OPTION) {
                 gl.gameReset();
