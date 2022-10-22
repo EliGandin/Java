@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/* This class contains the logic behind the game */
 public class GameLogic {
     private String target;
-    private static int attemptCounter;
+    private int attemptCounter;
     private ArrayList<String> inputLog;
     private int bulls;
     private int cows;
@@ -40,16 +41,16 @@ public class GameLogic {
     }
 
     /* Getter for the attempt counter */
-    public static int getAttemptCounter() {
+    public int getAttemptCounter() {
         return attemptCounter;
     }
 
     /* Setter for the attempt counter used when resetting the game */
-    public static void setAttemptCounter(int i) {
+    public void setAttemptCounter(int i) {
         attemptCounter = i;
     }
 
-    /* Getter for the input log */
+    /* Getter for the inputLog log */
     public ArrayList<String> getInputLog() {
         return inputLog;
     }
@@ -75,8 +76,8 @@ public class GameLogic {
     }
 
     /* Adds an attempt to the arraylist */
-    public void addInputLog(String input) {
-        inputLog.add(input);
+    public void addNumberLog(String input) {
+        inputLog.add("[" + input + "]:   Bulls: " + getBulls() + "   Cows: " + getCows()+ '\n');
     }
 
     /* Checks if the input has distinct numbers */
@@ -136,7 +137,7 @@ public class GameLogic {
                 }
             }
             attemptCounter++;
-            addInputLog(input);
+            addNumberLog(input);
             actionCode = 1; // Signals that the user hasn't won yet
         }
         return actionCode;
@@ -146,14 +147,10 @@ public class GameLogic {
     public void resetStats() {
         setBulls(0);
         setCows(0);
-        setAttemptCounter(0);
     }
 
     /* Result handling */
     public String outputPrint() {
-        return "Number of bulls: " + getBulls() + '\n' +
-                "Number of cows: " + getCows() + '\n' +
-                "Number of attempts: " + getAttemptCounter() + '\n' +
-                "Attempts: \n" + inputLog;
+        return String.join("", inputLog);
     }
 }

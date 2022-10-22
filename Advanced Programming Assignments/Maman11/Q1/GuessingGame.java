@@ -1,5 +1,6 @@
 import javax.swing.JOptionPane;
 
+/* This is the Main file */
 public class GuessingGame {
     /* Sets if the game loop will run according to the input */
     public static boolean setStatus(int actionCode, GameLogic gl) {
@@ -9,15 +10,17 @@ public class GuessingGame {
             JOptionPane.showMessageDialog(null, "Invalid Input", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         } else if (actionCode == 1) { // No Winner
-            JOptionPane.showMessageDialog(null, "Your results are:\n" + gl.outputPrint(), "Results",
+            JOptionPane.showMessageDialog(null, "Your results are:\n" + gl.outputPrint() +
+                            "Number of attempts so far: "+ gl.getAttemptCounter(), "Results",
                     JOptionPane.INFORMATION_MESSAGE);
             gl.resetStats();
             return true;
         } else {
-            int n = JOptionPane.showOptionDialog(null, "You Won !! \n" + "The target was " + gl.getTarget() + "\nDo you want to play again?",
+            int choice = JOptionPane.showOptionDialog(null, "You Won !! \n" + "The target was " + gl.getTarget() +
+                            "\nYou needed " + gl.getAttemptCounter() + "attempts" + "\nDo you want to play again?",
                     "Winner", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null, new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-            if (n == JOptionPane.YES_OPTION) {
+            if (choice == JOptionPane.YES_OPTION) {
                 gl.gameReset();
                 return true;
             } else {
