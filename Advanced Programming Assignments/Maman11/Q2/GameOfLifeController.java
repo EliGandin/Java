@@ -2,7 +2,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
 public class GameOfLifeController {
@@ -10,23 +9,21 @@ public class GameOfLifeController {
     @FXML
     private Canvas canv;
 
-    @FXML
-    private Button updateBtn;
-
     private GameLogic gl;
 
     private GraphicsContext gc;
 
     @FXML
     void pressed(ActionEvent event) {
-        setColor(gl.nextGeneration());
+        gl.nextGeneration(gl.getMat());
+        setColor(gl.getMat());
     }
 
     public void initialize() {
         gc = canv.getGraphicsContext2D();
         gl = new GameLogic();
         drawMatrix();
-        setColor(gl);
+        setColor(gl.getMat());
     }
 
     /* Draws the matrix */
@@ -41,17 +38,17 @@ public class GameOfLifeController {
     }
 
     /* Sets the color of the tiles */
-    public void setColor(GameLogic gl) {
+    public void setColor(boolean[][] mat) {
         double side = canv.getWidth()/10;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (gl.getMat()[i][j] == true) {
+                if (mat[i][j]) {
                     drawMatrix();
-                    gc.setFill(Color.WHITE);
+                    gc.setFill(Color.rgb(56,199,58));
                     gc.fillRect((j * side), (i * side), (j * side) + side, (i * side) + side + (j * side) + side);
                 } else{
                     drawMatrix();
-                    gc.setFill(Color.BLACK);
+                    gc.setFill(Color.WHITE);
                     gc.fillRect((j * side), (i * side), (j * side) + side, (i * side) + side + (j * side) + side);
                 }
             }

@@ -9,7 +9,7 @@
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button fx:id="updateBtn" mnemonicParsing="false" onAction="#pressed" text="Update Next Generation" />
+          <Button mnemonicParsing="false" onAction="#pressed" text="Update Next Generation" />
         </items>
       </ToolBar>
       <Canvas fx:id="canv" height="600.0" width="600.0" />
