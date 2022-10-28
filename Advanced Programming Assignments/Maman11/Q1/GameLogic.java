@@ -18,7 +18,7 @@ public class GameLogic {
     }
 
     /* Setting the target string */
-    public String setTarget() {
+    private String setTarget() {
         String target = "";
         ArrayList<Integer> arr = new ArrayList<Integer>(); // Used to make sure that all the numbers are distinct
         Random rand = new Random();
@@ -145,8 +145,8 @@ public class GameLogic {
 
     /* Resets the score after each attempt */
     public void resetStats() {
-        setBulls(0);
-        setCows(0);
+        bulls = 0;
+        cows = 0;
     }
 
     /* Result handling */
