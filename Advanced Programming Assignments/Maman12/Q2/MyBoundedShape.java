@@ -20,8 +20,7 @@ public abstract class MyBoundedShape extends MyShape {
     public boolean equals(Object obj) {
         if (obj instanceof MyOval && this instanceof MyOval || obj instanceof MyRectangle && this instanceof MyOval) {
             /* Calculates and evaluates the height and width of the MyBoundedShape */
-            return ((Math.abs(this.getX1() - this.getX2()) == Math.abs(((MyBoundedShape) obj).getX1() - ((MyBoundedShape) obj).getX2()))
-                    && ((Math.abs(this.getY1() - this.getY2()) == Math.abs(((MyBoundedShape) obj).getY1() - ((MyBoundedShape) obj).getY2()))));
+            return this.getX2() == ((MyBoundedShape) obj).getX2() && this.getY2() == ((MyBoundedShape) obj).getY2();
         } else {
             System.out.println("Not Instance of MyBoundedShape");
             return false;
