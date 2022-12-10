@@ -60,10 +60,6 @@ public class Controller {
     public void initialize() {
         gl = new GameLogic();
         setLevel();
-        for (int i = 0; i < gl.getPool().size(); i++) {
-            System.out.println(i);
-            System.out.println(gl.getPool().get(i).getUsrQuestion());
-        }
     }
 
     private void setLevel() {
